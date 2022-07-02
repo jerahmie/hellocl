@@ -76,7 +76,7 @@ int main(void)
       }
       // print device info
       if (devices.empty()) {
-	std::cerr << "OpenCL Devices not found." << '\n';
+	std::cerr << "\n No OpenCL devices found." << '\n';
 	return 1;
       }
 
