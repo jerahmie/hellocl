@@ -28,9 +28,15 @@ static const char source[] =
   "}\n";
   
 
+void print_ocl_device_info(cl::Device device) {
+  std::cout << "CL Device Info..." << '\n';
+  
+}
+
 int main(void)
 {
   const size_t N = 1 << 20;
+  
   std::cout << "\n\t\t" <<  " << Hello OpenCL >> " << "\n\n";
   try {
     // Get list of OpenCL platforms.
@@ -41,6 +47,8 @@ int main(void)
       std::cerr << "OpenCL platforms not found." << '\n';
       return 1;
     }
+    // print platform info
+    std::cout << "\n\t\t" << " << OpenCL Devices >> " << "\n\n";
     for (const auto& p: platform) {
       std::string platform_name;
       p.getInfo(CL_PLATFORM_NAME, &platform_name);
@@ -58,7 +66,22 @@ int main(void)
       std::cout << '\t' <<   "CL_PLATFORM_EXTENSIONS: " << platform_extensions << '\n';
       std::cout << '\t' <<   "   CL_PLATFORM_PROFILE: " << platform_profile << '\n';
       std::cout << '\t' <<   "   CL_PLATFORM_VERSION: " << platform_version << '\n';
+      
+      int  status = 0;
+      std::vector<cl::Device> devices;
+    
+      status = p.getDevices(CL_DEVICE_TYPE_ALL, &devices);
+      if (status != CL_SUCCESS) {
+	return status;
+      }
+      // print device info
+      if (devices.empty()) {
+	std::cerr << "OpenCL Devices not found." << '\n';
+	return 1;
+      }
+
     }
+
   } catch (const cl::Error &err) {
     std::cerr
       << "OpenCL error: "
