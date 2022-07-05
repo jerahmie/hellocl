@@ -7,5 +7,8 @@ edition = "2021"
 
 [dependencies]
 #opencl-sys = "0.2.1"
-opencl3 = "0.8.0"
-#features = ["CL_VERSION_2_1", "CL_VERSION_2_2", "CL_VERSION_3_0"]
+cl3 = "0.8"
+
+[dependencies.opencl3]
+version = "0.8"
+features = ["CL_VERSION_2_1", "CL_VERSION_2_2", "CL_VERSION_3_0"]
