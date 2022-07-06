@@ -18,17 +18,17 @@ fn platform_display(id: usize, p: &Platform) ->() {
     //println!("\tPlatform Host Timer Resulution: {}", p.host_timer_resolution().unwrap());
     //println!("\tPlatform Numeric Version: {}", p.numeric_version().unwrap());
     //println!("\tPlatform Extensions with Version: {}", p.extensions_with_version().unwrap());
-    println!("\tPlatform External Memory Import Handle Types KHR: \n\t\t");
+    //println!("\tPlatform External Memory Import Handle Types KHR: \n\t\t");
+    //let handle_types = p.platform_external_memory_import_handle_types_khr();
+    //let handle_types = match handle_types {
+    //	Ok(types) => types,
+    //	Err(error) => panic!("--> {:?}", error_text(error.0)),
+    //};
+    //for h in handle_types {
+    //	print!("{}, ", h.version);
+    //	//io::stdout().flush().unwrap();
+    //}
     
-    let handle_types = p.platform_external_memory_import_handle_types_khr();
-    let handle_types = match handle_types {
-	Ok(types) => types,
-	Err(error) => panic!("--> {:?}", error_text(error.0)),
-    };
-    for h in handle_types {
-	print!("{}, ", h.version);
-	//io::stdout().flush().unwrap();
-    }
     
 }
 
