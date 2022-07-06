@@ -3,9 +3,11 @@
  */
 use std::io;
 use std::io::Write;
+use std::str;
 use opencl3::platform::*;
 use opencl3::error_codes::*;
 use cl3::device::*;
+use cl3::platform::*;
 
 fn platform_display(id: usize, p: &Platform) ->() {
     println!("     -------------- OpenCL Device Summary -------------------");
@@ -28,8 +30,10 @@ fn platform_display(id: usize, p: &Platform) ->() {
     //	print!("{}, ", h.version);
     //	//io::stdout().flush().unwrap();
     //}
-    
-    
+    let platform_name = p.get_data(CL_PLATFORM_NAME).unwrap();
+    let platform_name: String = String::from_utf8(platform_name.clone()).unwrap().to_string();
+    println!("\tplatform_data: {}", platform_name.trim());
+
 }
 
 fn main() {
