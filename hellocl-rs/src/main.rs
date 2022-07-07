@@ -31,7 +31,8 @@ fn platform_display(id: usize, p: &Platform) ->() {
     //	//io::stdout().flush().unwrap();
     //}
     let platform_name = p.get_data(CL_PLATFORM_NAME).unwrap();
-    let platform_name: String = String::from_utf8(platform_name.clone()).unwrap().to_string();
+    // from_utf8
+    let platform_name: String = String::from_ascii(platform_name.clone()).unwrap();
     println!("\tplatform_data: {}", platform_name.trim());
 
 }
